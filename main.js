@@ -67,3 +67,7 @@ function thueSuat30PhanTram(thuNhapChiuThue){
 function thueSuat35PhanTram(thuNhapChiuThue){
     return (60 * 0.05 + 60 * 0.1 + 90 * 0.15 + 174 * 0.2 + 240 * 0.25 + 336 * 0.3 + (thuNhapChiuThue - 960) * 0.35);
 };
+
+/**
+ * BT2
+ */
