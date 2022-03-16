@@ -67,3 +67,74 @@ function thueSuat30PhanTram(thuNhapChiuThue){
 function thueSuat35PhanTram(thuNhapChiuThue){
     return (60 * 0.05 + 60 * 0.1 + 90 * 0.15 + 174 * 0.2 + 240 * 0.25 + 336 * 0.3 + (thuNhapChiuThue - 960) * 0.35);
 };
+
+/**
+ * TÍNH TIỀN CÁP
+ */
+
+const PHI_HD_NHADAN = 4.5;
+const PHI_DV_NHADAN = 20.5;
+const THUEKENH_NHADAN = 7.5;
+
+const PHI_HD_DOANHNGHIEP = 15;
+const PHI_DV_DOANHNGHIEP_10 = 75;
+const THUEKENH_DOANHNHGIEP = 50;
+
+document.addEventListener("click", function(){
+    var doanhNghiep = $("doanhNghiep");
+
+    if(doanhNghiep.checked){
+        // $("soKN").disabled = false;
+        document.querySelector(".soKetNoi").style.display = "block";
+    }else{
+        // $("soKN").disabled = true;
+        document.querySelector(".soKetNoi").style.display = "none";
+    }
+});
+
+$("btnTinhTienCap").onclick = function(){
+    var maKH = $("maKH").value;
+    var soLuongKCC = $("soLuongKCC").value *1;
+    var soKN = $("soKN").value *1;
+    var loaiKH = "";
+    var tongTienCap;
+
+    loaiKH = layLoaiKH();
+    switch (loaiKH) {
+        case "doanhNghiep":
+            tongTienCap = tongTienCapDoanhNghiep(soLuongKCC, soKN);
+            break;
+        case "nhaDan":
+            tongTienCap = tongTienCapNhaDan(soLuongKCC);
+            break;
+    };
+
+    $("tongTienCap").innerHTML = "Mã khách hàng " + maKH + " phải trả là: " + tongTienCap + " $";
+}
+
+function layLoaiKH(){
+    var doanhNghiep = $("doanhNghiep");
+    var loaiKH = "";
+
+    if(doanhNghiep.checked){
+        loaiKH = "doanhNghiep";
+    }else{
+        loaiKH = "nhaDan";
+    }
+
+    return loaiKH;
+}
+
+function tongTienCapNhaDan(soLuongKCC){
+    return PHI_HD_NHADAN + PHI_DV_NHADAN + THUEKENH_NHADAN * soLuongKCC;
+}
+
+function tongTienCapDoanhNghiep(soLuongKCC, soKN){
+    if(soKN <= 10){  
+        return PHI_HD_DOANHNGHIEP + THUEKENH_DOANHNHGIEP * soLuongKCC 
+                         + ((PHI_DV_DOANHNGHIEP_10 / 10) * soKN);
+    }else {
+        return PHI_HD_DOANHNGHIEP + THUEKENH_DOANHNHGIEP * soLuongKCC 
+                         + 75 + 12.5 * (soKN - 10);
+    };
+};

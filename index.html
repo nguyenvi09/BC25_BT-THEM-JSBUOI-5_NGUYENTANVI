@@ -16,6 +16,9 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="./main.css" />
   </head>
   <body>
     <div class="container">
@@ -51,6 +54,59 @@
               </div>
             </div>
             <div id="tongTienPhaiTra" class="card-footer text-muted"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- TÍNH TIỀN CÁP -->
+    <div class="container mb-5">
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-center">TÍNH TIỀN CÁP</div>
+            <div class="card-body">
+              <div class="form-group text-center mr-5">
+                <label>Chọn loại khách hàng:</label>
+                <ul>
+                  <li class="type">
+                    <input type="radio" name="selector" id="doanhNghiep" />
+                    <label for="doanhNghiep">Doanh nghiệp</label>
+                    <div class="check"></div>
+                  </li>
+
+                  <li class="type">
+                    <input type="radio" name="selector" id="nhaDan" />
+                    <label for="nhaDan">Nhà dân</label>
+                    <div class="check"></div>
+                  </li>
+                </ul>
+
+                <label class="col-6 text-right">Mã khách hàng: </label>
+                <input placeholder="Nhập mã" type="text" id="maKH" />
+
+                <label class="col-6 text-right">Số kênh cao cấp: </label>
+                <input
+                  placeholder="Nhập số lượng kênh"
+                  type="text"
+                  id="soLuongKCC"
+                />
+
+                <div class="soKetNoi">
+                  <label class="col-6 text-right">Số kết nối: </label>
+                  <input
+                    placeholder="Nhập số lượng kết nối"
+                    type="text"
+                    id="soKN"
+                  />
+                </div>
+
+                <button id="btnTinhTienCap" class="btn btn-success mt-2">
+                  TÍNH
+                </button>
+              </div>
+            </div>
+            <div id="tongTienCap" class="card-footer text-muted"></div>
           </div>
         </div>
       </div>
