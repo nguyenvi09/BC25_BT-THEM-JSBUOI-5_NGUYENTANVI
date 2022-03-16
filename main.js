@@ -70,6 +70,16 @@ function thueSuat35PhanTram(thuNhapChiuThue){
 
 /**
  * TÍNH TIỀN CÁP
+ * 
+ * - Đầu vào: maKH, chọn loại khách hàng, soKN, soLuongKCC
+ * 
+ * - Xử lý: 
+ * B1: tạo hàm lấy loại khách hàng
+ * B2: ẩn hiện trường số kết nối 
+ * B3: tạo 2 hàm tính tiền cáp
+ * B4: dùng switch kiểm tra giá trị chính xác rồi tính tiền cáp
+ * 
+ * - Đầu ra: In mã khách hàng và số tiền cáp phải trả ra màn hình
  */
 
 const PHI_HD_NHADAN = 4.5;
@@ -77,8 +87,22 @@ const PHI_DV_NHADAN = 20.5;
 const THUEKENH_NHADAN = 7.5;
 
 const PHI_HD_DOANHNGHIEP = 15;
+// phí dịch vụ của 10 kết nối đầu
 const PHI_DV_DOANHNGHIEP_10 = 75;
 const THUEKENH_DOANHNHGIEP = 50;
+
+function layLoaiKH(){
+    var doanhNghiep = $("doanhNghiep");
+    var loaiKH = "";
+
+    if(doanhNghiep.checked){
+        loaiKH = "doanhNghiep";
+    }else{
+        loaiKH = "nhaDan";
+    }
+
+    return loaiKH;
+}
 
 document.addEventListener("click", function(){
     var doanhNghiep = $("doanhNghiep");
@@ -112,18 +136,7 @@ $("btnTinhTienCap").onclick = function(){
     $("tongTienCap").innerHTML = "Mã khách hàng " + maKH + " phải trả là: " + tongTienCap + " $";
 }
 
-function layLoaiKH(){
-    var doanhNghiep = $("doanhNghiep");
-    var loaiKH = "";
 
-    if(doanhNghiep.checked){
-        loaiKH = "doanhNghiep";
-    }else{
-        loaiKH = "nhaDan";
-    }
-
-    return loaiKH;
-}
 
 function tongTienCapNhaDan(soLuongKCC){
     return PHI_HD_NHADAN + PHI_DV_NHADAN + THUEKENH_NHADAN * soLuongKCC;
