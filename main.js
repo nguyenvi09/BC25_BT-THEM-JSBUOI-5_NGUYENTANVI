@@ -69,7 +69,6 @@ function thueSuat35PhanTram(thuNhapChiuThue){
 };
 
 /**
-<<<<<<< HEAD
  * TÍNH TIỀN CÁP
  * 
  * - Đầu vào: maKH, chọn loại khách hàng, soKN, soLuongKCC
@@ -152,7 +151,3 @@ function tongTienCapDoanhNghiep(soLuongKCC, soKN){
                          + 75 + 12.5 * (soKN - 10);
     };
 };
-=======
- * BT2
- */
->>>>>>> 62144e50bfbcd7f499c40d27b1491f16dd2f781d
